@@ -1,31 +1,49 @@
-import path from 'path';
-import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
-import CopyPlugin from "copy-webpack-plugin";
-import { fileURLToPath } from 'url';
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+module.exports = {
+  mode: "production",
+  entry: "./src/index.js",
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
+  output: {
+    path: path.resolve(__dirname, "public"),
 
-export default {
-    mode: "production",
-    entry: {
-        index: path.resolve(__dirname, './src/js/index.js')
-    },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-    },
-    performance: {
-        maxAssetSize: 1000000,
-        maxEntrypointSize: 1000000,
-    },
-    plugins: [
-        new NodePolyfillPlugin(),
-        new CopyPlugin({
-            patterns: [
-                { from: "src/index.html" },
-                { from: "src/style.css" },
-            ],
-        }),
+    filename: "main.js",
+  },
+  devServer: {
+    port: "8080",
+    static: { directory: path.join(__dirname, "./public") },
+    open: true,
+    hot: true,
+    liveReload: true,
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ],
+        include: path.join(__dirname, "src"),
+      },
     ],
-    target: ['web', 'es5']
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "public", "index.html"),
+    }),
+  ],
+  target: ["web", "es5"],
 };
