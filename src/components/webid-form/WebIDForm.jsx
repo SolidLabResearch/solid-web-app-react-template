@@ -9,9 +9,7 @@ function WebIDForm() {
   const webId = session.info.webId;
   const isLoggedIn = session.info.isLoggedIn;
 
-  useEffect(() => {
-
-  }, [webId])
+  useEffect(() => {}, [webId]);
 
   /**
    * Logs in the user with the given WebID.
@@ -29,7 +27,7 @@ function WebIDForm() {
    */
   function handleLogout(event) {
     event.preventDefault();
-    session.logout()
+    session.logout();
   }
 
   return (
@@ -44,6 +42,7 @@ function WebIDForm() {
             placeholder="Enter your WebID"
             value="http://localhost:3000/example/profile/card#me"
           />
+          {" "}
           <input type="submit" id="log-in-btn" value="Log in" />
         </form>
       )}
@@ -51,10 +50,12 @@ function WebIDForm() {
       {isLoggedIn && (
         <div id="user">
           <p>
-            Logged in with WebID
+            Logged in with WebID{" "}
             <span id="current-webid">{getDefaultSession().info.webId}</span>
           </p>
-          <button onClick={handleLogout} id="log-out-btn">Log out</button>
+          <button onClick={handleLogout} id="log-out-btn">
+            Log out
+          </button>
         </div>
       )}
     </>

@@ -16,11 +16,19 @@ function BooksQueryTable() {
         Show book wish list (public)
       </button>
       {isLoggedIn && (
-        <button onClick={() => {
-          queryBooks("http://localhost:3000/example/favourite-books", setResults)
-        }}>
-          Show favourite books (private)
-        </button>
+        <>
+          {" "}
+          <button
+            onClick={() => {
+              queryBooks(
+                "http://localhost:3000/example/favourite-books",
+                setResults
+              );
+            }}
+          >
+            Show favourite books (private)
+          </button>
+        </>
       )}
 
       {results.length > 0 && (
@@ -76,6 +84,5 @@ async function queryBooks(url, resultAdder) {
     resultAdder((old) => [...old, binding]);
   });
 }
-
 
 export default BooksQueryTable;
