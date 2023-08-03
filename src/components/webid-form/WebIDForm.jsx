@@ -44,7 +44,7 @@ function WebIDForm() {
             placeholder="Enter your WebID"
             value="http://localhost:3000/example/profile/card#me"
           />
-          <input type="submit" id="log-in-btn" value="Login" />
+          <input type="submit" id="log-in-btn" value="Log in" />
         </form>
       )}
       {errorMessage && <div id="no-oidc-issuer-error">{errorMessage}</div>}
