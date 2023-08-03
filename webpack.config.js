@@ -18,13 +18,6 @@ export default {
 
     filename: "main.js",
   },
-  devServer: {
-    port: "8080",
-    static: { directory: path.join(__dirname, "./public") },
-    open: true,
-    hot: true,
-    liveReload: true,
-  },
   resolve: {
     extensions: [".js", ".jsx", ".json"],
   },

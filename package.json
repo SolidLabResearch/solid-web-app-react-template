@@ -13,7 +13,7 @@
     "start:pods": "npx @solid/community-server -c @css:config/file-no-setup.json -f pods",
     "reset:pods": "npx rimraf pods && npm run prepare:pods",
     "build": "webpack .",
-    "start": "webpack-dev-server ."
+    "start": "webpack-dev-server --config ./webpack.dev.config.js"
   },
   "author": "Pieter Heyvaert (https://pieterheyvaert.com)",
   "license": "MIT",
