@@ -1,8 +1,5 @@
-import { AppRunner, joinFilePath } from '@solid/community-server';
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { AppRunner, joinFilePath } = require('@solid/community-server');
+const path = require('path');
 
 addPodAccounts();
 
