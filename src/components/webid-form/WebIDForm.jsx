@@ -1,6 +1,6 @@
-const { QueryEngine } = require("@comunica/query-sparql");
+import { QueryEngine } from "@comunica/query-sparql";
 import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
-const { useState, useEffect } = require("react");
+import { useState, useEffect } from "react";
 import "./WebIDForm.css";
 
 function WebIDForm() {
@@ -92,7 +92,7 @@ async function getOIDCIssuerAndLogIn(webId, errorSetter) {
     try {
       await solidLogin(bindings[0].get("oidcIssuer").id);
     } catch (error) {
-      setErrorMessage("Failed to log in. Please try again.");
+      errorSetter("Failed to log in. Please try again.");
     }
   } else {
     errorSetter("Error: the WebID has no OIDC issuer defined.");
