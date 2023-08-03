@@ -40,7 +40,7 @@ function WebIDForm() {
             id="webid"
             name="webid"
             placeholder="Enter your WebID"
-            value="http://localhost:3000/example/profile/card#me"
+            defaultValue="http://localhost:3000/example/profile/card#me"
           />
           {" "}
           <input type="submit" id="log-in-btn" value="Log in" />
