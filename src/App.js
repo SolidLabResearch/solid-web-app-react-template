@@ -26,7 +26,6 @@ const App = () => {
   });
   return (
     <>
-      <h1>HELLOOO</h1>
       <WebIDForm isLoggedIn={isLoggedIn} />
       <BooksQueryTable isLoggedIn={isLoggedIn} />
     </>
