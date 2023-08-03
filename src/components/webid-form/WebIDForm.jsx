@@ -1,35 +1,17 @@
 const { QueryEngine } = require("@comunica/query-sparql");
-const {
-  getDefaultSession,
-  login,
-  handleIncomingRedirect
-} = require("@inrupt/solid-client-authn-browser");
+import { getDefaultSession } from "@inrupt/solid-client-authn-browser";
 const { useState, useEffect } = require("react");
 import "./WebIDForm.css";
 
 function WebIDForm() {
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const [isLoggedIn, setLoggedIn] = useState(
-    getDefaultSession().info.isLoggedIn
-  );
-
   const session = getDefaultSession();
-  useEffect(() => {
-    session.onLogin(() => setLoggedIn(true));
-    session.onLogout(() => setLoggedIn(false));
+  const webId = session.info.webId;
+  const isLoggedIn = session.info.isLoggedIn;
 
-    // In this function we don't use await because inside a React Effect it causes linting warnings and according to several sources on the Web it is not recommended.
-    // https://ultimatecourses.com/blog/using-async-await-inside-react-use-effect-hook
-    // https://www.thisdot.co/blog/async-code-in-useeffect-is-dangerous-how-do-we-deal-with-it/
-    handleIncomingRedirect({ restorePreviousSession: true }).then((info) => {
-      if (info) {
-        let status = info.isLoggedIn;
-        if (status !== isLoggedIn) {
-          setLoggedIn(status);
-        }
-      }
-    });
-  });
+  useEffect(() => {
+
+  }, [webId])
 
   /**
    * Logs in the user with the given WebID.
@@ -38,12 +20,7 @@ function WebIDForm() {
   async function handleLogin(event) {
     event.preventDefault();
     const webId = event.target[0].value;
-    try {
-      await getOIDCIssuerAndLogIn(webId, setErrorMessage);
-      setLoggedIn(true);
-    } catch (error) {
-      setLoggedIn(false);
-    }
+    await getOIDCIssuerAndLogIn(webId, setErrorMessage);
   }
 
   /**
@@ -52,8 +29,7 @@ function WebIDForm() {
    */
   function handleLogout(event) {
     event.preventDefault();
-    getDefaultSession().logout();
-    setLoggedIn(false);
+    session.logout()
   }
 
   return (
@@ -75,7 +51,7 @@ function WebIDForm() {
       {isLoggedIn && (
         <div id="user">
           <p>
-            Logged in with WebID{" "}
+            Logged in with WebID
             <span id="current-webid">{getDefaultSession().info.webId}</span>
           </p>
           <button onClick={handleLogout} id="log-out-btn">Log out</button>
@@ -131,7 +107,7 @@ async function getOIDCIssuerAndLogIn(webId, errorSetter) {
  */
 async function solidLogin(oidcIssuer) {
   if (!getDefaultSession().info.isLoggedIn) {
-    await login({
+    await getDefaultSession().login({
       oidcIssuer,
       redirectUrl: window.location.href,
       clientName: "Solid React App",
