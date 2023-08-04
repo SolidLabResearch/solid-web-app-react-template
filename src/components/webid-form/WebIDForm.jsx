@@ -9,8 +9,6 @@ function WebIDForm() {
   const webId = session.info.webId;
   const isLoggedIn = session.info.isLoggedIn;
 
-  useEffect(() => {}, [webId]);
-
   /**
    * Logs in the user with the given WebID.
    * @param {Event} event event that triggered the function call
@@ -51,7 +49,7 @@ function WebIDForm() {
         <div id="user">
           <p>
             Logged in with WebID{" "}
-            <span id="current-webid">{getDefaultSession().info.webId}</span>
+            <span id="current-webid">{webId}</span>
           </p>
           <button onClick={handleLogout} id="log-out-btn">
             Log out
