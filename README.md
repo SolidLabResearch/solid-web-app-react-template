@@ -10,14 +10,14 @@ This template helps you to get started with creating a Solid Web app.
   for authenticating with an identity provider.
   You find the browser-specific documentation 
   [here](https://docs.inrupt.com/developer-tools/javascript/client-libraries/tutorial/authenticate-browser/).
-- [webpack](https://webpack.js.org/) to bundle the JavaScript.
+- [webpack](https://webpack.js.org/) to bundle the [React](https://react.dev/) application.
 - [Cypress](https://www.cypress.io/) to test our app.
 
 ## Usage
 
 1. Clone this repository via
    ```shell
-   git clone https://github.com/SolidLabResearch/solid-web-app-template.git
+   git clone https://github.com/SolidLabResearch/solid-web-app-react-template.git
    ```
 2. Install the dependencies via 
    ```shell
