@@ -1,7 +1,7 @@
 {
   "name": "solid-web-app-template",
   "version": "0.0.4",
-  "description": "A template for a Solid Web app.",
+  "description": "A template for a Solid Web app with React.",
   "main": "src/index.js",
   "type": "module",
   "private": true,
@@ -16,6 +16,7 @@
     "start": "webpack-dev-server --config ./webpack.dev.config.js"
   },
   "author": "Pieter Heyvaert (https://pieterheyvaert.com)",
+  "contributors": ["Aron Buzogany"],
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.22.9",
