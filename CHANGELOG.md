@@ -41,7 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Configuration for Community Solid Server
 - Configuration for webpack
 
-[0.0.5]: https://github.com/SolidLabResearch/solid-web-app-template/compare/v0.0.4...v0.0.5
+[0.0.5]: https://github.com/SolidLabResearch/solid-web-app-react-template/releases/tag/v0.0.5
 [0.0.4]: https://github.com/SolidLabResearch/solid-web-app-template/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/SolidLabResearch/solid-web-app-template/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/SolidLabResearch/solid-web-app-template/compare/v0.0.1...v0.0.2
